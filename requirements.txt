@@ -1,0 +1,17 @@
+streamlit
+PyPDF2
+google-generativeai
+python-dotenv
+chromadb
+sentence-transformers
+numpy
+pandas
+plotly
+hashlib
+docx2txt
+openpyxl
+python-pptx
+markdown
+faiss-cpu
+streamlit-authenticator
+bcrypt
