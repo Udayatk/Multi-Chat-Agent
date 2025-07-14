@@ -1,13 +1,13 @@
-# Multi-PDF Chat AI Agent
+# 🚀 Advanced Multi-PDF Chat AI Agent
 
-A powerful yet simple AI-powered application that allows you to upload multiple PDF documents and have natural language conversations with their content. Built with Streamlit and Google Gemini AI.
+An intelligent AI-powered chat application that allows you to upload multiple PDF documents and have conversations with their content using Google Gemini AI.
 
-## 🌟 Features
+## ✨ Features
 
-- **Multi-Format Support**: Upload and process PDF, TXT, and Markdown documents
-- **Google Gemini AI**: Powered by Google's latest Gemini 2.0 Flash model  
-- **Intelligent Chat**: Ask questions about your documents using natural language
-- **Advanced Search**: Built-in keyword search with source attribution
+- 📄 **Multi-format Support**: Upload PDF, TXT, and Markdown files
+- 🤖 **AI-Powered Chat**: Conversation interface powered by Google Gemini
+- 🔍 **Intelligent Search**: Keyword-based document search with relevance scoring
+- 📊 **Analytics Dashboard**: Document statistics and session analytics
 - **Analytics Dashboard**: Track usage statistics and document analytics
 - **Multi-Tab Interface**: Organized chat, search, and analytics views
 - **Document Management**: Smart deduplication and document library
