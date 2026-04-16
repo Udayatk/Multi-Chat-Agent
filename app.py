@@ -7,6 +7,7 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 import streamlit as st
+
 import os
 from datetime import datetime
 from dotenv import load_dotenv
@@ -14,15 +15,23 @@ import pandas as pd
 
 from modules.rag_system import RAGSystem
 
-# Load environment variables
+# Load environment variables (for local dev)
 load_dotenv()
 
-# Get API keys
+# Get API keys (prefer st.secrets for Streamlit Cloud)
 NVIDIA_API_KEY = os.getenv('NVIDIA_API_KEY')
 PINECONE_API_KEY = os.getenv('PINECONE_API_KEY', '')
 
+# Use st.secrets if running on Streamlit Cloud
+if 'NVIDIA_API_KEY' in st.secrets:
+    NVIDIA_API_KEY = st.secrets['NVIDIA_API_KEY']
+    os.environ['NVIDIA_API_KEY'] = NVIDIA_API_KEY
+if 'PINECONE_API_KEY' in st.secrets:
+    PINECONE_API_KEY = st.secrets['PINECONE_API_KEY']
+    os.environ['PINECONE_API_KEY'] = PINECONE_API_KEY
+
 if not NVIDIA_API_KEY:
-    st.error("⚠️ NVIDIA_API_KEY not found in environment variables. Please add it to your .env file.")
+    st.error("⚠️ NVIDIA_API_KEY not found in environment variables or Streamlit secrets. Please add it to your .env file or Streamlit secrets.")
     st.stop()
 
 # Page configuration
@@ -109,6 +118,11 @@ def main():
             if st.button("🗑️ Clear All Sources", use_container_width=False):
                 pinecone_key = os.getenv('PINECONE_API_KEY', '')
                 nvidia_key = os.getenv('NVIDIA_API_KEY')
+                # Use st.secrets if available
+                if 'NVIDIA_API_KEY' in st.secrets:
+                    nvidia_key = st.secrets['NVIDIA_API_KEY']
+                if 'PINECONE_API_KEY' in st.secrets:
+                    pinecone_key = st.secrets['PINECONE_API_KEY']
                 st.session_state.rag_system = RAGSystem(pinecone_api_key=pinecone_key, nvidia_api_key=nvidia_key)
                 st.session_state.processed_sources = []
                 st.session_state.conversation_history = []
